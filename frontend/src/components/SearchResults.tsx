@@ -160,12 +160,12 @@ function SearchResultCard({ result, index }: { result: SearchResult; index: numb
       {document.metadata.keywords && document.metadata.keywords.length > 0 && (
         <div className="mt-3 pt-3 border-t border-gray-100">
           <div className="flex flex-wrap gap-1">
-            {document.metadata.keywords.split(', ').slice(0, 5).map((keyword, idx) => (
+            {document.metadata.keywords.slice(0, 5).map((keyword, idx) => (
               <span
                 key={idx}
                 className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded"
               >
-                {keyword.trim()}
+                {keyword}
               </span>
             ))}
           </div>
