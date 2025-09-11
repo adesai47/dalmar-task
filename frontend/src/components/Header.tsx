@@ -16,10 +16,6 @@ export function Header() {
             </div>
           </div>
           
-          <div className="flex items-center space-x-2 text-sm text-gray-500">
-            <Search className="h-4 w-4" />
-            <span>Powered by ChromaDB & FastAPI</span>
-          </div>
         </div>
       </div>
     </header>

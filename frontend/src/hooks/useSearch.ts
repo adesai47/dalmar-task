@@ -11,7 +11,7 @@ export const useSearch = () => {
       const request: SearchRequest = {
         query,
         limit: 10,
-        threshold: 0.6,
+        threshold: 0.05,
         use_web_fallback: true,
       }
       return await searchApi.search(request)
