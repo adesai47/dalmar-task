@@ -1,0 +1,93 @@
+[
+  {
+    "content": "Type 2 diabetes is a chronic condition that affects how your body processes blood sugar (glucose). It's characterized by insulin resistance and relative insulin deficiency. Management includes lifestyle modifications such as diet, exercise, weight loss, and medications like metformin, sulfonylureas, and insulin therapy. Regular monitoring of blood glucose levels and HbA1c is essential for optimal control.",
+    "metadata": {
+      "title": "Type 2 Diabetes Management",
+      "category": "Endocrinology",
+      "source": "American Diabetes Association Guidelines",
+      "keywords": ["diabetes", "type 2", "insulin resistance", "glucose", "metformin", "HbA1c"]
+    }
+  },
+  {
+    "content": "Hypertension, or high blood pressure, is defined as systolic blood pressure ≥140 mmHg or diastolic blood pressure ≥90 mmHg. The condition increases the risk of heart disease, stroke, and kidney disease. First-line treatments include ACE inhibitors, ARBs, thiazide diuretics, and calcium channel blockers. Lifestyle modifications include DASH diet, regular exercise, sodium restriction, and weight management.",
+    "metadata": {
+      "title": "Hypertension Treatment Guidelines",
+      "category": "Cardiology",
+      "source": "American Heart Association",
+      "keywords": ["hypertension", "blood pressure", "ACE inhibitors", "ARBs", "DASH diet", "cardiovascular"]
+    }
+  },
+  {
+    "content": "COVID-19 is caused by the SARS-CoV-2 virus and primarily spreads through respiratory droplets. Common symptoms include fever, cough, fatigue, loss of taste or smell, and shortness of breath. Severe cases can lead to pneumonia, acute respiratory distress syndrome (ARDS), and multi-organ failure. Prevention strategies include vaccination, mask-wearing, social distancing, and hand hygiene. Treatment options include antiviral medications, monoclonal antibodies, and supportive care.",
+    "metadata": {
+      "title": "COVID-19 Clinical Overview",
+      "category": "Infectious Diseases",
+      "source": "CDC Clinical Guidelines",
+      "keywords": ["COVID-19", "SARS-CoV-2", "pandemic", "vaccination", "respiratory", "ARDS"]
+    }
+  },
+  {
+    "content": "Coronary artery disease (CAD) is the most common type of heart disease, caused by atherosclerosis of the coronary arteries. Risk factors include smoking, hypertension, diabetes, high cholesterol, obesity, and family history. Symptoms include chest pain (angina), shortness of breath, and fatigue. Treatment includes lifestyle modifications, medications (statins, beta-blockers, ACE inhibitors), and procedures like angioplasty or bypass surgery.",
+    "metadata": {
+      "title": "Coronary Artery Disease",
+      "category": "Cardiology",
+      "source": "American College of Cardiology",
+      "keywords": ["coronary artery disease", "atherosclerosis", "angina", "statins", "angioplasty", "bypass surgery"]
+    }
+  },
+  {
+    "content": "Depression is a common mental health disorder characterized by persistent sadness, loss of interest, and other symptoms lasting at least two weeks. Symptoms include fatigue, sleep disturbances, appetite changes, difficulty concentrating, and thoughts of death or suicide. Treatment options include psychotherapy (CBT, interpersonal therapy), antidepressant medications (SSRIs, SNRIs), and lifestyle modifications. Early intervention is crucial for better outcomes.",
+    "metadata": {
+      "title": "Major Depressive Disorder",
+      "category": "Psychiatry",
+      "source": "American Psychiatric Association",
+      "keywords": ["depression", "mental health", "SSRIs", "CBT", "psychotherapy", "antidepressants"]
+    }
+  },
+  {
+    "content": "Pediatric vaccinations follow the CDC's recommended immunization schedule to protect children from vaccine-preventable diseases. Key vaccines include DTaP (diphtheria, tetanus, pertussis), MMR (measles, mumps, rubella), polio, hepatitis B, and varicella. Vaccination timing is critical for optimal immune response. Common side effects are mild and include fever, soreness at injection site, and irritability. Serious adverse events are rare.",
+    "metadata": {
+      "title": "Pediatric Vaccination Schedule",
+      "category": "Pediatrics",
+      "source": "CDC Immunization Guidelines",
+      "keywords": ["vaccination", "pediatrics", "immunization", "DTaP", "MMR", "hepatitis B"]
+    }
+  },
+  {
+    "content": "Emergency medicine focuses on the immediate assessment and treatment of acute illnesses and injuries. The ABCDE approach (Airway, Breathing, Circulation, Disability, Exposure) is fundamental for trauma assessment. Common emergencies include myocardial infarction, stroke, trauma, sepsis, and respiratory distress. Triage systems help prioritize patients based on severity. Rapid diagnosis and stabilization are key principles.",
+    "metadata": {
+      "title": "Emergency Medicine Principles",
+      "category": "Emergency Medicine",
+      "source": "Emergency Medicine Journal",
+      "keywords": ["emergency medicine", "trauma", "ABCDE", "triage", "myocardial infarction", "stroke"]
+    }
+  },
+  {
+    "content": "Drug interactions can be pharmacokinetic (affecting drug absorption, distribution, metabolism, or excretion) or pharmacodynamic (affecting drug action). Common interactions include warfarin with NSAIDs, statins with grapefruit juice, and ACE inhibitors with potassium supplements. Healthcare providers must review all medications, including over-the-counter drugs and supplements, to prevent adverse interactions. Computerized drug interaction checking systems help identify potential problems.",
+    "metadata": {
+      "title": "Drug Interactions and Safety",
+      "category": "Pharmacology",
+      "source": "Pharmacology and Therapeutics",
+      "keywords": ["drug interactions", "pharmacokinetics", "pharmacodynamics", "warfarin", "statins", "medication safety"]
+    }
+  },
+  {
+    "content": "Cancer screening aims to detect cancer early when treatment is most effective. Common screening tests include mammography for breast cancer, colonoscopy for colorectal cancer, Pap smears for cervical cancer, and PSA testing for prostate cancer. Screening guidelines vary by age, gender, and risk factors. Benefits include early detection and improved survival, while risks include false positives, overdiagnosis, and unnecessary procedures.",
+    "metadata": {
+      "title": "Cancer Screening Guidelines",
+      "category": "Oncology",
+      "source": "American Cancer Society",
+      "keywords": ["cancer screening", "mammography", "colonoscopy", "Pap smear", "PSA", "early detection"]
+    }
+  },
+  {
+    "content": "Chronic kidney disease (CKD) is defined as kidney damage or decreased kidney function lasting more than 3 months. Stages are based on glomerular filtration rate (GFR) and albuminuria. Risk factors include diabetes, hypertension, and family history. Management includes blood pressure control, diabetes management, dietary modifications, and medications like ACE inhibitors or ARBs. Advanced stages may require dialysis or kidney transplantation.",
+    "metadata": {
+      "title": "Chronic Kidney Disease Management",
+      "category": "Nephrology",
+      "source": "National Kidney Foundation",
+      "keywords": ["chronic kidney disease", "CKD", "GFR", "albuminuria", "dialysis", "kidney transplantation"]
+    }
+  }
+]
+
