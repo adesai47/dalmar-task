@@ -41,3 +41,34 @@ export interface SearchRequest {
   use_web_fallback?: boolean
 }
 
+// Chat-related types
+export interface ChatMessage {
+  role: 'user' | 'assistant'
+  content: string
+  timestamp?: string
+  images?: string[] // Base64 or URL images
+}
+
+export interface ChatRequest {
+  query: string
+  chat_history?: ChatMessage[]
+  use_web_fallback?: boolean
+  stream?: boolean
+  images?: string[] // Base64 encoded images
+}
+
+export interface ChatResponse {
+  query: string
+  response: string
+  context_documents: any[]
+  used_web_fallback: boolean
+  images: string[]
+  total_context_found: number
+  timestamp: string
+}
+
+export interface ChatStreamEvent {
+  type: 'metadata' | 'start' | 'content' | 'complete' | 'error'
+  data: any
+}
+

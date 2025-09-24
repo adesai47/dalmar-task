@@ -36,3 +36,30 @@ class IngestResponse(BaseModel):
     message: str
     documents_ingested: int
 
+# Chat-related schemas
+class ChatMessage(BaseModel):
+    role: str  # "user" or "assistant"
+    content: str
+    timestamp: Optional[str] = None
+    images: Optional[List[str]] = None  # Base64 encoded images
+
+class ChatRequest(BaseModel):
+    query: str
+    chat_history: Optional[List[ChatMessage]] = []
+    use_web_fallback: bool = True
+    stream: bool = False
+    images: Optional[List[str]] = None  # Base64 encoded images
+
+class ChatResponse(BaseModel):
+    query: str
+    response: str
+    context_documents: List[Dict[str, Any]]
+    used_web_fallback: bool
+    images: List[str] = []
+    total_context_found: int
+    timestamp: str = datetime.now().isoformat()
+
+class ChatStreamEvent(BaseModel):
+    type: str  # "metadata", "start", "content", "complete", "error"
+    data: Dict[str, Any]
+

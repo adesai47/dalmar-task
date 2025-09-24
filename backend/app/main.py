@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 import uvicorn
-from app.routes import search, health, ingest
+from app.routes import search, health, ingest, chat
 from app.services.vector_store import VectorStoreService
 from app.services.web_search import WebSearchService
 
@@ -49,6 +49,7 @@ app.add_middleware(
 app.include_router(health.router, prefix="/api", tags=["health"])
 app.include_router(search.router, prefix="/api", tags=["search"])
 app.include_router(ingest.router, prefix="/api", tags=["ingest"])
+app.include_router(chat.router, prefix="/api", tags=["chat"])
 
 @app.get("/")
 async def root():
