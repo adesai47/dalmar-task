@@ -1,11 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { SearchBar } from '@/components/SearchBar'
 import { SearchResults } from '@/components/SearchResults'
 import { Header } from '@/components/Header'
 import { SearchSuggestions } from '@/components/SearchSuggestions'
 import { useSearch } from '@/hooks/useSearch'
+import { MessageCircle, Search } from 'lucide-react'
 
 export default function Home() {
   const [query, setQuery] = useState('')
@@ -26,9 +28,30 @@ export default function Home() {
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
               Healthcare Document Retrieval
             </h1>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 mb-6">
               Search through healthcare documents using advanced RAG technology
             </p>
+            
+            {/* Navigation Cards */}
+            <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+              <Link 
+                href="/" 
+                className="p-6 bg-white rounded-lg border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all"
+              >
+                <Search className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Document Search</h3>
+                <p className="text-gray-600">Search and retrieve relevant healthcare documents</p>
+              </Link>
+              
+              <Link 
+                href="/chat" 
+                className="p-6 bg-white rounded-lg border border-gray-200 hover:border-green-300 hover:shadow-md transition-all"
+              >
+                <MessageCircle className="h-8 w-8 text-green-600 mx-auto mb-3" />
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">AI Chat Assistant</h3>
+                <p className="text-gray-600">Chat with AI powered by RAG and Azure OpenAI</p>
+              </Link>
+            </div>
           </div>
 
           <SearchBar onSearch={handleSearch} isLoading={isLoading} />
