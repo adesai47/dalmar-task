@@ -195,7 +195,7 @@ class VectorStoreService:
             print(f"Error adding documents: {e}")
             raise
     
-    async def search(self, query: str, limit: int = 5, threshold: float = 0.7) -> List[Dict[str, Any]]:
+    async def search(self, query: str, limit: int = 5, threshold: float = 0.3) -> List[Dict[str, Any]]:
         """Search for similar documents"""
         try:
             results = self.collection.query(
@@ -211,7 +211,12 @@ class VectorStoreService:
                 results["distances"][0]
             )):
                 # Convert distance to similarity score (ChromaDB uses cosine distance)
-                similarity_score = 1 - distance
+                # Handle cases where distance > 1 by using a different formula
+                if distance <= 1:
+                    similarity_score = 1 - distance
+                else:
+                    # For distances > 1, use a normalized similarity
+                    similarity_score = max(0, 1 / (1 + distance))
                 
                 if similarity_score >= threshold:
                     search_results.append({

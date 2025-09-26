@@ -42,7 +42,7 @@ async def generate_chat_stream(
         search_response = await rag_service.search(
             query=query,
             limit=5,
-            threshold=0.6,
+            threshold=0.3,  # Lowered threshold to capture more relevant documents
             use_web_fallback=use_web_fallback
         )
         
@@ -155,7 +155,7 @@ async def chat(
         search_response = await rag_service.search(
             query=request.query,
             limit=5,
-            threshold=0.6,
+            threshold=0.3,  # Lowered threshold to capture more relevant documents
             use_web_fallback=request.use_web_fallback
         )
         

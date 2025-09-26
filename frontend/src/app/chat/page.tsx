@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { ChatMessage, ChatStreamEvent } from '@/types'
 import { Send, Bot, User, Loader2, Image as ImageIcon } from 'lucide-react'
+import { config } from '@/lib/config'
 
 export default function ChatPage() {
   const [messages, setMessages] = useState<ChatMessage[]>([])
@@ -10,10 +11,12 @@ export default function ChatPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [currentResponse, setCurrentResponse] = useState('')
   const [contextInfo, setContextInfo] = useState<any>(null)
+  const [contextDocuments, setContextDocuments] = useState<any[]>([])
   const [images, setImages] = useState<string[]>([])
   const [uploadedImages, setUploadedImages] = useState<string[]>([])
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const currentResponseRef = useRef('')
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -58,12 +61,14 @@ export default function ChatPage() {
     setInput('')
     setIsLoading(true)
     setCurrentResponse('')
+    currentResponseRef.current = '' // Initialize ref
     setContextInfo(null)
+    setContextDocuments([]) // Clear context documents
     setImages([])
     setUploadedImages([]) // Clear uploaded images after sending
 
     try {
-      const response = await fetch('http://localhost:8000/api/chat/stream', {
+      const response = await fetch(`${config.apiUrl}/api/chat/stream`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -117,23 +122,26 @@ export default function ChatPage() {
                   // console.log('Content data:', contentData) // Debug log
                   setCurrentResponse(prev => {
                     const newResponse = prev + contentData
+                    currentResponseRef.current = newResponse // Update ref
                     // console.log('Updated response:', newResponse) // Debug log
                     return newResponse
                   })
                   break
                 case 'complete':
-                  // Complete the message - currentResponse already contains the full response
+                  // Complete the message - use ref to get the latest response content
                   const assistantMessage: ChatMessage = {
                     role: 'assistant',
-                    content: currentResponse, // Don't append event.data as it's an object
+                    content: currentResponseRef.current, // Use ref to get latest content
                     timestamp: new Date().toISOString()
                   }
                   setMessages(prev => [...prev, assistantMessage])
-                  setCurrentResponse('')
+                  setCurrentResponse('') // Clear the streaming response
+                  currentResponseRef.current = '' // Clear the ref
                   setIsLoading(false) // Set loading to false here instead of in finally
                   
-                  // Extract images from context documents
+                  // Store context documents and extract images
                   if (event.data.context_documents) {
+                    setContextDocuments(event.data.context_documents)
                     const extractedImages: string[] = []
                     event.data.context_documents.forEach((doc: any) => {
                       if (doc.metadata?.images) {
@@ -251,6 +259,50 @@ export default function ChatPage() {
                 Found {contextInfo.context_documents_count} relevant documents
                 {contextInfo.used_web_fallback && ' (including web search results)'}
               </p>
+            </div>
+          )}
+
+          {/* Context Documents */}
+          {contextDocuments.length > 0 && (
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+              <div className="flex items-center space-x-2 mb-3">
+                <Bot className="h-4 w-4 text-gray-600" />
+                <span className="text-sm font-medium text-gray-900">Relevant Documents Used</span>
+              </div>
+              <div className="space-y-3">
+                {contextDocuments.map((doc, index) => (
+                  <div key={index} className="bg-white border border-gray-200 rounded-lg p-3">
+                    <div className="flex items-start justify-between mb-2">
+                      <h4 className="font-medium text-gray-900 text-sm">
+                        {doc.metadata?.title || `Document ${index + 1}`}
+                      </h4>
+                      <div className="flex items-center space-x-2">
+                        <span className="text-xs text-gray-500">
+                          {Math.round((doc.similarity_score || 0) * 100)}% match
+                        </span>
+                        <span className={`text-xs px-2 py-1 rounded ${
+                          doc.source === 'web_search' 
+                            ? 'bg-green-100 text-green-800' 
+                            : 'bg-blue-100 text-blue-800'
+                        }`}>
+                          {doc.source === 'web_search' ? 'Web' : 'Database'}
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-sm text-gray-700 leading-relaxed">
+                      {doc.content.length > 200 
+                        ? `${doc.content.substring(0, 200)}...` 
+                        : doc.content
+                      }
+                    </p>
+                    {doc.metadata?.source && (
+                      <p className="text-xs text-gray-500 mt-2">
+                        Source: {doc.metadata.source}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 
