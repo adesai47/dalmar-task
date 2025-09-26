@@ -13,7 +13,7 @@ class RAGService:
         self, 
         query: str, 
         limit: int = 5, 
-        threshold: float = 0.7, 
+        threshold: float = 0.3, 
         use_web_fallback: bool = True
     ) -> SearchResponse:
         """
@@ -122,7 +122,7 @@ class RAGService:
             
             # Perform a test search to get metrics
             start_time = datetime.now()
-            results = await self.search(query, limit=5, threshold=0.7)
+            results = await self.search(query, limit=5, threshold=0.3)
             end_time = datetime.now()
             
             search_time = (end_time - start_time).total_seconds()
